@@ -2,6 +2,9 @@
   "name": "lms-platform",
   "version": "0.1.0",
   "private": true,
+  "files": [
+    "prisma/dev.db"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
