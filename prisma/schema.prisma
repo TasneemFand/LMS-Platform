@@ -1,17 +1,15 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "mongodb"
+  url = "mongodb+srv://tasnimtepe:hMSYTzuwJpMApfJf@cluster0.mj9zks7.mongodb.net/test"
 }
 
 model Course {
-  id          String  @id @default(uuid())
+  id          String  @id @default(uuid()) @map("_id")
   userId      String
   title       String
   description String?
@@ -33,7 +31,7 @@ model Course {
 }
 
 model Attachment {
-  id   String @id @default(uuid())
+  id   String @id @default(uuid()) @map("_id")
   name String
   url  String
 
@@ -47,13 +45,13 @@ model Attachment {
 }
 
 model Category {
-  id      String   @id @default(uuid())
+  id      String   @id @default(uuid()) @map("_id")
   name    String   @unique
   courses Course[]
 }
 
 model Chapter {
-  id           String         @id @default(uuid())
+  id           String         @id @default(uuid()) @map("_id")
   title        String
   description  String?
   videoUrl     String?
@@ -73,7 +71,7 @@ model Chapter {
 }
 
 model MuxData {
-  id         String  @id @default(uuid())
+  id         String  @id @default(uuid()) @map("_id")
   assetId    String
   playbackId String?
 
@@ -82,7 +80,7 @@ model MuxData {
 }
 
 model UserProgress {
-  id     String @id @default(uuid())
+  id     String @id @default(uuid()) @map("_id")
   userId String
 
   chapterId String
@@ -98,7 +96,7 @@ model UserProgress {
 }
 
 model Purchase {
-  id     String @id @default(uuid())
+  id     String @id @default(uuid()) @map("_id")
   userId String
 
   courseId String
@@ -112,7 +110,7 @@ model Purchase {
 }
 
 model StripeCustomer {
-  id               String @id @default(uuid())
+  id               String @id @default(uuid()) @map("_id")
   userId           String @unique
   stripeCustomerId String @unique
 
